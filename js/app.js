@@ -9,13 +9,14 @@ const crearCartas = () => {
             cartas.push(i + tipo);
         }
     }
-    console.log(tomarUnaCarta(cartas));
+    console.log(valorCarta(tomarUnaCarta(cartas)));
+
 };
 
 
-function tomarUnaCarta(arr) {
+const tomarUnaCarta = (arr) => {
     const random = Math.round(Math.random() * arr.length);
-    let carta = '';
+    let carta = 'No hay cartas disponibles';
     arr.forEach((element, index) => {
         if (index === random) {
             carta = element;
@@ -26,5 +27,14 @@ function tomarUnaCarta(arr) {
 }
 
 
+const valorCarta = (carta) => {
+
+    const valor = carta.substring(0, carta.length - 1);
+
+    if (!isNaN(valor)) {
+        return valor;
+    }
+    return valor;
+};
 
 crearCartas();
