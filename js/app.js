@@ -9,9 +9,22 @@ const crearCartas = () => {
             cartas.push(i + tipo);
         }
     }
+    console.log(tomarUnaCarta(cartas));
 };
+
+
+function tomarUnaCarta(arr) {
+    const random = Math.round(Math.random() * arr.length);
+    let carta = '';
+    arr.forEach((element, index) => {
+        if (index === random) {
+            carta = element;
+            arr.splice(index, 1);
+        }
+    });
+    return carta;
+}
 
 
 
 crearCartas();
-console.log(cartas);
