@@ -3,6 +3,10 @@ const tiposCartas = ['C', 'D', 'H', 'S'];
 const tiposEspeciales = ['A', 'J', 'Q', 'K'];
 
 
+
+document.querySelector('.nuevo-juego').addEventListener('click', () => crearCartas());
+
+
 const crearCartas = () => {
 
 
@@ -30,6 +34,7 @@ const tomarUnaCarta = (arr) => {
         if (index === random) {
             carta = element;
             arr.splice(index, 1);
+            
         }
     });
     return carta;
@@ -37,14 +42,9 @@ const tomarUnaCarta = (arr) => {
 
 
 const valorCarta = (carta) => {
-
-    const valor = carta.substring(0, carta.length - 1);
-
-    if (isNaN(valor)) {
-        return valor;
-    }
-    return parseInt(valor);
+    console.log(`Carta entrante: ${carta}`);
+    let valor = carta.substring(0, carta.length - 1);
+    return (isNaN(valor) ? (valor === 'A' ? 11 : 10) : parseInt(valor));
 };
 
 
-crearCartas();
