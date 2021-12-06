@@ -5,6 +5,11 @@ let puntosJugador = 0;
 let puntosPC = 0;
 const span = document.querySelectorAll('span');
 const jugadorCartas = document.querySelector('#jugadorCartas');
+const ordenadorCartas = document.querySelector('#ordenadorCartas');
+const pedirCarta = document.querySelector('.pedir');
+const detener = document.querySelector('.detener');
+const btnNuevoJuego = document.querySelector(".nuevo");
+
 
 
 
@@ -27,6 +32,8 @@ const crearCartas = () => {
 };
 
 
+crearCartas();
+
 const tomarUnaCarta = () => {
     const random = Math.round(Math.random() * cartas.length);
     let carta = 'No hay cartas disponibles';
@@ -45,25 +52,107 @@ const valorCarta = (carta) => {
     return (isNaN(valor) ? (valor === 'A' ? 11 : 10) : parseInt(valor));
 };
 
-crearCartas();
+
+const nuevaCarta = (carta) => {
+    const nuevaCarta = document.createElement('img');
+    nuevaCarta.src = `static/cartas/${carta}.png`;
+    nuevaCarta.alt = "carta";
+    nuevaCarta.width = "90";
+    return nuevaCarta;
+};
 
 
-const pedirCarta = document.querySelector('.pedir');
+const computadora = (puntosMinimos) => {
+
+    do {
+        const carta = tomarUnaCarta();
+        puntosPC += valorCarta(carta);
+        span[1].innerText = puntosPC;
+        ordenadorCartas.appendChild(nuevaCarta(carta));
+
+        if (puntosMinimos > 21) {
+            break;
+        }
+
+        if(puntosMinimos == 21){
+            break;
+        }
+
+    } while ((puntosPC < puntosMinimos));
+
+    setTimeout(() => verficarGanador(puntosPC, puntosMinimos), 20);
+
+};
 
 
-pedirCarta.addEventListener('click', () => {
+function verficarGanador(puntosComputadora, puntosJugador){
+    if(puntosJugador === 21){
+     alert("Has ganado la partida, puntos exactos");
+    } else if(puntosJugador > 21){
+        alert("Has perdido la partida, pasaste el límite de 21");
+    }else if(puntosComputadora === puntosJugador){
+        alert("Empate");
+    } else if(puntosComputadora > 21){
+        alert("Has ganado la partida, la computadora pasó el límite de 21");
+    } else if(puntosJugador < 21){
+        if((puntosComputadora > puntosJugador) && (puntosComputadora <= 21 )){
+            alert("Has perdido la partida, la computadora consiguió mayor puntaje y no superó el límite de 21");
+        }
+    }
+}
+
+
+
+
+pedirCarta.addEventListener('click', (event) => {
+
+    btnNuevoJuego.disabled = false;
 
     const carta = tomarUnaCarta();
     puntosJugador += valorCarta(carta);
     span[0].innerText = puntosJugador;
     jugadorCartas.appendChild(nuevaCarta(carta));
 
+
+    if (puntosJugador > 21) {
+        event.target.disabled = true;
+        detener.disabled = true;
+        computadora(puntosJugador);
+    } else if (puntosJugador === 21) {
+        event.target.disabled = true;
+        detener.disabled = true;
+        console.log("Has ganado la partida");
+        computadora(puntosJugador);
+    }
+
+
 });
 
-const nuevaCarta = (carta) =>{
-    const nuevaCarta = document.createElement('img');
-    nuevaCarta.src = 'static/cartas/'+carta+'.png';
-    nuevaCarta.alt = "carta";
-    nuevaCarta.width = "90";
-    return nuevaCarta;
-};
+detener.addEventListener('click', () => {
+
+    detener.disabled = true;
+    pedirCarta.disabled = true;
+    btnNuevoJuego.disabled = false;
+    computadora(puntosJugador);
+
+});
+
+btnNuevoJuego.addEventListener('click', () => {
+
+    detener.disabled = false;
+    pedirCarta.disabled = false;
+    puntosJugador = 0;
+    puntosPC = 0;
+    span[0].innerText = 0;
+    span[1].innerText = 0;
+    btnNuevoJuego.disabled = true;
+    crearCartas();
+    jugadorCartas.innerHTML = "";
+    ordenadorCartas.innerHTML = "";
+});
+
+
+
+
+
+
