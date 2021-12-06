@@ -3,16 +3,21 @@
 
 
     let cartas = [];
-    const tiposCartas = ['C', 'D', 'H', 'S'];
-    const tiposEspeciales = ['A', 'J', 'Q', 'K'];
-    let puntosJugador = 0;
-    let puntosPC = 0;
-    const span = document.querySelectorAll('span');
-    const jugadorCartas = document.querySelector('#jugadorCartas');
-    const ordenadorCartas = document.querySelector('#ordenadorCartas');
-    const pedirCarta = document.querySelector('.pedir');
-    const detener = document.querySelector('.detener');
-    const btnNuevoJuego = document.querySelector(".nuevo");
+    
+    const tiposCartas = ['C', 'D', 'H', 'S']
+        , tiposEspeciales = ['A', 'J', 'Q', 'K'];
+
+    let puntosJugador = 0
+        , puntosPC = 0;
+
+    const span = document.querySelectorAll('span')
+        , jugadorCartas = document.querySelector('#jugadorCartas')
+        , ordenadorCartas = document.querySelector('#ordenadorCartas');
+
+
+    const pedirCarta = document.querySelector('.pedir')
+        , detener = document.querySelector('.detener')
+        , btnNuevoJuego = document.querySelector(".nuevo");
 
 
 
