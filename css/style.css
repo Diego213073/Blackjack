@@ -1,7 +1,56 @@
-img {
-    margin-right: -3.5rem;
+:root {
+  --color-primario: #001b79;
+  --color-secundario: #1640d6;
+  --color-fuente: #ed5ab3;
 }
 
-.jugador {
-    height: 200px;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-primario);
+  color: var(--color-fuente);
+}
+
+button {
+  border: none;
+  background: #ff90c2;
+  color: var(--color-primario);
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+img {
+  margin-inline-end: -3.5rem;
+}
+
+.jugador,
+.ordenador {
+  padding: 1rem;
+}
+
+#ordenadorCartas,
+#jugadorCartas {
+  min-block-size: 180px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+  padding: 10px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  background: red;
 }
