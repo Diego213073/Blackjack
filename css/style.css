@@ -1,56 +1,97 @@
-:root {
-  --color-primario: #001b79;
-  --color-secundario: #1640d6;
-  --color-fuente: #ed5ab3;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto+Mono:wght@100&family=Roboto+Slab:wght@400;900&display=swap");
 *,
-*::after,
-*::before {
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: dark;
+}
+
 body {
-  background: var(--color-primario);
-  color: var(--color-fuente);
+  font-family: "Roboto Slab", serif;
 }
 
-button {
-  border: none;
-  background: #ff90c2;
-  color: var(--color-primario);
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: bold;
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.input_jugador {
   font-size: 20px;
-  cursor: pointer;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: 100;
 }
 
-img {
-  margin-inline-end: -3.5rem;
+.input_jugador:focus {
+  outline: 2px solid white;
 }
 
-.jugador,
-.ordenador {
-  padding: 1rem;
+.error_input {
+  outline: 2px solid red;
+  background: rgb(188, 106, 106);
 }
 
-#ordenadorCartas,
-#jugadorCartas {
-  min-block-size: 180px;
+.contenedor_jugadores > section {
+  min-block-size: 200px;
+  padding: 15px;
+  & h1 {
+    margin-block-end: 10px;
+  }
 }
 
-.botones {
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.ganador {
+  background: green;
+}
+.perdedor {
+  background: rgb(173, 51, 51);
+  & h1,
+  & div {
+    opacity: 0.5;
+  }
+}
+
+.modal_mascara {
+  position: absolute;
+  background: rgb(16, 14, 14, 0.5);
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.desaparecer {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.modal_jugadores {
+  background: black;
+  inline-size: 300px;
+  block-size: 300px;
+  border-radius: 5px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  column-gap: 5px;
-  padding: 10px;
-}
-
-button:disabled {
-  opacity: 0.5;
-  background: red;
+  justify-content: center;
+  column-gap: 10px;
+  & button {
+    padding: 10px;
+    background: white;
+    color: black;
+    border-radius: inherit;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+  }
 }
