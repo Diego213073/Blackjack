@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: dark;
+}
+
 body {
   font-family: "Roboto Slab", serif;
   min-block-size: 100vh;
@@ -96,7 +100,7 @@ header {
   block-size: 500px;
   margin: 50px auto;
   padding: 20px;
-  box-shadow: 1px 1px 5px 5px rgb(218, 207, 207);
+  border: thin solid rgb(56, 53, 53);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
