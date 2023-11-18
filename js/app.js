@@ -46,12 +46,12 @@ pedirCarta.addEventListener('click', (event) => {
     if (jugador.getPuntuacion > 21) {
         identificador++;
         contenedorJugadorActual.classList.add('perdedor');
+        detener.disabled = true; 
+        event.target.disabled = true;
         if (identificador === jugadores.length - 1 && existeComputadora()) {
             computadora(jugador.getPuntuacion);
             return;
         }
-        event.target.disabled = true;
-        detener.disabled = true;
         alert(`Has perdido jugador #${jugador.identificador}`)
         return
     }
@@ -104,7 +104,7 @@ function computadora(puntosMinimos) {
             break;
         }
 
-        if(computadora.getPuntuacion > puntosMinimos && computadora.getPuntuacion < 21) {
+        if (computadora.getPuntuacion > puntosMinimos && computadora.getPuntuacion < 21) {
             contenedorComputadora.classList.add('ganador');
         }
 

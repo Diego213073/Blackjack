@@ -7,17 +7,9 @@
   box-sizing: border-box;
 }
 
-:root {
-  color-scheme: dark;
-}
-
 body {
   font-family: "Roboto Slab", serif;
-}
-
-a {
-  text-decoration: none;
-  color: white;
+  min-block-size: 100vh;
 }
 
 .input_jugador {
@@ -39,18 +31,19 @@ a {
 }
 
 .contenedor_jugadores > section {
-  min-block-size: 200px;
+  min-block-size: 215px;
   padding: 15px;
   & h1 {
     margin-block-end: 10px;
   }
+  & div {
+    display: flex;
+    column-gap: 15px;
+    & img {
+      filter: drop-shadow(0 0 5px rgb(74, 71, 72));
+    }
+  }
 }
-
-.template-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
 .ganador {
   background: green;
 }
@@ -77,7 +70,6 @@ a {
 }
 
 .modal_jugadores {
-  background: black;
   inline-size: 300px;
   block-size: 300px;
   border-radius: 5px;
@@ -85,13 +77,38 @@ a {
   align-items: center;
   justify-content: center;
   column-gap: 10px;
-  & button {
-    padding: 10px;
-    background: white;
-    color: black;
-    border-radius: inherit;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-  }
+}
+
+header {
+  padding: 16px;
+  text-align: center;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.contenedor_jugadores {
+  max-inline-size: 800px;
+  block-size: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 1px 1px 5px 5px rgb(218, 207, 207);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  font-size: 15px;
+  inline-size: 150px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
 }
