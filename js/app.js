@@ -1,5 +1,5 @@
 
-import { tomarUnaCarta, valorCarta, nuevaCarta } from "./carta.js";
+import { tomarUnaCarta, valorCarta, nuevaCarta } from "./Carta.js";
 import { inicializarJuego, reiniciar } from "./InicializacionJuego.js";
 import { jugadores, contenedoresJugadores, strongList } from "./InicializacionJuego.js";
 
