@@ -15,6 +15,7 @@ btnNuevoJuego.addEventListener('click', () => {
     inicializarJuego();
     reiniciar();
     identificador = 0;
+    turno.lastElementChild.textContent = '';
 });
 
 pedirCarta.addEventListener('click', (event) => {
