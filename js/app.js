@@ -6,6 +6,7 @@ import { jugadores, contenedoresJugadores, strongList } from "./InicializacionJu
 let identificador = 0;
 
 const [btnNuevoJuego, pedirCarta, detener] = document.querySelectorAll('.botones > button');
+const turno = document.querySelector('.turno');
 
 btnNuevoJuego.addEventListener('click', () => {
     detener.disabled = false;
@@ -25,9 +26,11 @@ pedirCarta.addEventListener('click', (event) => {
     const contenedorJugadorActual = contenedoresJugadores[identificador];
     agregarHijo(contenedorJugadorActual, carta);
 
+    turno.lastElementChild.textContent = `${jugador.nombreJugador} 
+    ${jugador.nombreJugador === 'Jugador' ? `#${jugador.identificador}` : ''}`;
+
     if (identificador === jugadores.length - 1) {
         const [jugadorUno, jugadorDos] = jugadores;
-        const contenedorJugadorUno = contenedoresJugadores[identificador - 1];
         if ((jugadorDos.getPuntuacion > jugadorUno.getPuntuacion)
             && jugadorDos.getPuntuacion <= 21) {
             alert('Jugador 2 es el ganador!');
@@ -46,7 +49,7 @@ pedirCarta.addEventListener('click', (event) => {
     if (jugador.getPuntuacion > 21) {
         identificador++;
         contenedorJugadorActual.classList.add('perdedor');
-        detener.disabled = true; 
+        detener.disabled = true;
         event.target.disabled = true;
         if (identificador === jugadores.length - 1 && existeComputadora()) {
             computadora(jugador.getPuntuacion);

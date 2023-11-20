@@ -16,6 +16,16 @@ body {
   min-block-size: 100vh;
 }
 
+.turno {
+  text-align: center;
+  padding-block-start: 40px;
+  & p {
+    margin-block-start: 10px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
 .contenedor_jugadores > section {
   min-block-size: 215px;
   padding: 15px;
