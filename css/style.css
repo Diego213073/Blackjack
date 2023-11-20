@@ -16,24 +16,6 @@ body {
   min-block-size: 100vh;
 }
 
-.input_jugador {
-  font-size: 20px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  font-family: inherit;
-  font-weight: 100;
-}
-
-.input_jugador:focus {
-  outline: 2px solid white;
-}
-
-.error_input {
-  outline: 2px solid red;
-  background: rgb(188, 106, 106);
-}
-
 .contenedor_jugadores > section {
   min-block-size: 215px;
   padding: 15px;
