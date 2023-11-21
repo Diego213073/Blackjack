@@ -1,4 +1,4 @@
-import { crearCartas } from "./carta.js";
+import { crearCartas } from "./Carta.js";
 import { NOMBRE_JUGADORES } from "./Util.js";
 import { Jugador } from "./Jugador.js";
 
